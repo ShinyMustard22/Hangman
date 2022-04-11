@@ -4,22 +4,22 @@ class Man:
 
     def addBodyPart(self):
         if self.stage == 1:
-            # print head to console
+            return # print head to console
 
         elif self.stage == 2:
-            # print body to console
+            return # print body to console
 
         elif self.stage == 3:
-            # print left arm to console
+            return # print left arm to console
 
         elif self.stage == 4:
-            # print right arm to console
+            return # print right arm to console
 
         elif self.stage == 5:
-            # print left leg to console
+            return # print left leg to console
 
         elif self.stage == 6:
-            # print right leg to console
+            return # print right leg to console
 
         self.stage += 1
 
