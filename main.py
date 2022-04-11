@@ -11,8 +11,9 @@ def main():
     guessed_word = ['_'] * letters
     actual_word = word_functions.generateWord(letters)
 
-    console_printing.drawGallows()
-
+    while not man.isHanged():
+        console_printing.refresh(guessed_word)
+        break
 
 if __name__ == "__main__":
     main()
