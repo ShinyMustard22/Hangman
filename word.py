@@ -16,26 +16,32 @@ class Word:
         else:
             word_file = open("words/sevenLetterWords.txt", "r")
 
-        word = word_file.readlines()[random.randint(0, utility.file_len(word_file.name) - 1)]
+        word_string = word_file.readlines()[random.randint(0, utility.file_len(word_file.name) - 1)]
         word_file.close()
 
-        word_list = list(word)
-        word_list.pop(len(word_list) - 1)
+        word = list(word_string)
+        word = word[:-1]
 
-        self.__word_list = word_list
+        self.__word = word
+        self.__guessed_word = ["_"] * letters
+        self.__guessed_letters = set([])
 
-    def check_letter(self, letter, guessed_word):
+    def check_letter(self, letter):
         contains_letter = False
 
-        for i in range(len(self.__word_list)):
-            if self.__word_list[i] == letter:
+        for i in range(len(self.__word)):
+            if self.__word[i] == letter:
                 contains_letter = True
-                guessed_word[i] = letter
+                self.__guessed_word[i] = letter
 
+        self.__guessed_letters.add(letter)
         return contains_letter
 
-    @property
-    def _word_list(self):
-        return self.__word_list
+    def if_won(self):
+        return self.__guessed_word == self.__word
 
-    word_list = property(get_age())
+    def get_guessed_word(self):
+        return self.__guessed_word
+
+    def get_guessed_letters(self):
+        return self.__guessed_letters
