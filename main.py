@@ -1,19 +1,19 @@
-import console_printing
 import random
-import word_functions
+from word import Word
 from man import Man
+import console_printing
 
 
 def main():
-    man = Man()
     letters = random.randint(4, 7)
 
-    guessed_word = ['_'] * letters
-    actual_word = word_functions.generateWord(letters)
+    word = Word(letters)
+    man = Man()
 
-    while not man.isHanged():
-        console_printing.refresh(guessed_word)
-        break
+    while not man.isHanged() and not word.if_won():
+        console_printing.refresh(word)
+        guess = console_printing.get_guess(word)
+        word.check_letter(guess)
 
 if __name__ == "__main__":
     main()
