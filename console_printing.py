@@ -1,15 +1,16 @@
 import colorama
 import time
+import utility
 from colorama import Fore
 
 
-def draw_Board(guessed_word):
+def draw_Board(guessed_word, man):
     print("   - - - -")
     print("   |     |")
-    print("   |")
-    print("   |")
-    print("   |")
-    print(" _ _ _", '\t\t', draw_guessed_word(guessed_word))
+    print("   |     " + Fore.CYAN + man.head())
+    print(Fore.WHITE + "   |    " + Fore.CYAN + man.leftArm() + man.abdomen() + man.rightArm())
+    print(Fore.WHITE + "   |    " + Fore.CYAN + man.leftLeg() + " " + man.rightLeg())
+    print(Fore.WHITE + " _ _ _", '\t\t', draw_guessed_word(guessed_word))
 
 
 def draw_guessed_word(guessed_word):
@@ -27,21 +28,21 @@ def print_letter_count(letters):
     print("There are", letters, "letters in this word.")
 
 
-def refresh(word):
+def refresh(word, man):
     colorama.init()
     print(Fore.WHITE + "\n" * 50)
-    draw_Board(word.get_guessed_word())
+    draw_Board(word.get_guessed_word(), man)
     print_letter_count(len(word.get_guessed_word()))
 
 
-def get_guess(word):
+def get_guess(word, man):
     guess = input("Guess the next letter: ")
 
     while len(guess) != 1 or not guess.isalpha() or set(word.get_guessed_letters()).__contains__(guess):
-        refresh(word)
+        refresh(word, man)
 
         if len(guess) != 1:
-            print(Fore.RED + "That is not a character...")
+            print(Fore.YELLOW + "That is not a character...")
         elif not guess.isalpha():
             print(Fore.YELLOW + "That is not a letter...")
         else:
@@ -53,20 +54,23 @@ def get_guess(word):
 
 
 def correct_guess():
+
     print(Fore.GREEN + "Congratulations! That letter is in the word!")
     time.sleep(1.5)
 
 
 def incorrect_guess():
-    print(Fore.RED + "Sorry! That guess was incorrect...")
+    print(Fore.RED + "Sorry! letter is not in the word...")
     time.sleep(1.5)
 
 
-def winning_message():
+def winning_message(word):
     print(Fore.GREEN + "\n" * 50)
     print("Amazing! You won!!!")
+    print("The word was", utility.list_to_string(word.get_word()) + "!")
 
 
-def losing_message():
+def losing_message(word):
     print(Fore.RED + "\n" * 50)
     print("Unfortunate! You lost...\nBetter luck next time!")
+    print("The word was", utility.list_to_string(word.get_word()) + ".")
