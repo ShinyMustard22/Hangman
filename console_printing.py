@@ -1,3 +1,8 @@
+import colorama
+import time
+from colorama import Fore
+
+
 def draw_Board(guessed_word):
     print("   - - - -")
     print("   |     |")
@@ -23,7 +28,8 @@ def print_letter_count(letters):
 
 
 def refresh(word):
-    # clear the screen
+    colorama.init()
+    print(Fore.WHITE + "\n" * 50)
     draw_Board(word.get_guessed_word())
     print_letter_count(len(word.get_guessed_word()))
 
@@ -35,12 +41,32 @@ def get_guess(word):
         refresh(word)
 
         if len(guess) != 1:
-            print("That is not a character...")
+            print(Fore.RED + "That is not a character...")
         elif not guess.isalpha():
-            print("That is not a letter...")
+            print(Fore.YELLOW + "That is not a letter...")
         else:
-            print("You already guessed that...")
+            print(Fore.YELLOW + "You already guessed that...")
 
-        guess = input("Guess the next letter: ")
+        guess = input(Fore.WHITE + "Guess the next letter: ")
 
     return guess
+
+
+def correct_guess():
+    print(Fore.GREEN + "Congratulations! That letter is in the word!")
+    time.sleep(1.5)
+
+
+def incorrect_guess():
+    print(Fore.RED + "Sorry! That guess was incorrect...")
+    time.sleep(1.5)
+
+
+def winning_message():
+    print(Fore.GREEN + "\n" * 50)
+    print("Amazing! You won!!!")
+
+
+def losing_message():
+    print(Fore.RED + "\n" * 50)
+    print("Unfortunate! You lost...\nBetter luck next time!")

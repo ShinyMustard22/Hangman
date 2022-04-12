@@ -13,7 +13,18 @@ def main():
     while not man.isHanged() and not word.if_won():
         console_printing.refresh(word)
         guess = console_printing.get_guess(word)
-        word.check_letter(guess)
+
+        if word.check_letter(guess):
+            console_printing.correct_guess()
+
+        else:
+            console_printing.incorrect_guess()
+
+    if word.if_won():
+        console_printing.winning_message()
+
+    else:
+        console_printing.losing_message()
 
 if __name__ == "__main__":
     main()
