@@ -43,5 +43,8 @@ class Word:
     def get_guessed_word(self):
         return self.__guessed_word
 
+    def get_word(self):
+        return self.__word
+
     def get_guessed_letters(self):
         return self.__guessed_letters
