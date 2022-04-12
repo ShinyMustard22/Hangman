@@ -1,27 +1,61 @@
 class Man:
     def __init__(self):
-        self.stage = 1
+        self.__body = []
 
     def addBodyPart(self):
-        if self.stage == 1:
-            return  # print head to console
+        if len(self.__body) == 0:
+            self.__body.append("0")
 
-        elif self.stage == 2:
-            return  # print body to console
+        elif len(self.__body) == 1:
+            self.__body.append("|")
 
-        elif self.stage == 3:
-            return  # print left arm to console
+        elif len(self.__body) == 2:
+            self.__body.append("/")
 
-        elif self.stage == 4:
-            return  # print right arm to console
+        elif len(self.__body) == 3:
+            self.__body.append("\\")
 
-        elif self.stage == 5:
-            return  # print left leg to console
+        elif len(self.__body) == 4:
+            self.__body.append("/")
 
-        elif self.stage == 6:
-            return  # print right leg to console
-
-        self.stage += 1
+        elif len(self.__body) == 5:
+            self.__body.append("\\")
 
     def isHanged(self):
-        return self.stage == 7
+        return len(self.__body) == 6
+
+    def head(self):
+        if len(self.__body) > 0:
+            return self.__body[0]
+
+        return " "
+
+    def abdomen(self):
+        if len(self.__body) > 1:
+            return self.__body[1]
+
+        return " "
+
+    def leftArm(self):
+        if len(self.__body) > 2:
+            return self.__body[2]
+
+        return " "
+
+    def rightArm(self):
+        if len(self.__body) > 3:
+            return self.__body[3]
+
+        return " "
+
+    def leftLeg(self):
+        if len(self.__body) > 4:
+            return self.__body[4]
+
+        return " "
+
+    def rightLeg(self):
+        if len(self.__body) > 5:
+            return self.__body[5]
+
+        return " "
