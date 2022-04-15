@@ -100,6 +100,7 @@ covers
 create
 credit
 crisis
+cringe
 custom
 damage
 danger
