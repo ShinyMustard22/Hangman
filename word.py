@@ -25,7 +25,7 @@ class Word:
         self.__word = word
         self.__guessed_word = ["_"] * letters
         self.__guessed_letters = set([])
-        self.__missed_letters = set([])
+        self.__missed_letters = []
 
     def check_letter(self, letter):
         contains_letter = False
@@ -53,5 +53,5 @@ class Word:
     def get_guessed_letters(self):
         return self.__guessed_letters
     
-    def get_guessed_letters(self):
+    def get_missed_letters(self):
         return self.__missed_letters # and this is a list btw
