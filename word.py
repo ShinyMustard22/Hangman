@@ -33,6 +33,9 @@ class Word:
             if self.__word[i] == letter:
                 contains_letter = True
                 self.__guessed_word[i] = letter
+        
+        if contains_letter == False:
+            self.__missed_letters.append(letter)
 
         self.__guessed_letters.add(letter)
         return contains_letter
