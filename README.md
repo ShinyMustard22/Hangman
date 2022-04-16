@@ -25,6 +25,7 @@ Thank you for checking this out and playing! Feel free developers to contribute 
 ## Contributors
 
 - Ritam Chakraborty <ritam.chakraborty@gmail.com>
+- Shubham Parab <skparab1@gmail.com>
 
 ---
 
