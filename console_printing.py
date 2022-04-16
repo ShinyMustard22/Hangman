@@ -4,8 +4,14 @@ import utility
 from colorama import Fore
 
 
-def draw_Board(guessed_word, man):
-    print("   - - - -")
+def draw_Board(word, guessed_word, man):
+    print("   - - - -                   ", end='')
+    
+    #print out each missed letter
+    i = 0;
+    while (i < word.missed_letters.length):
+        print(word.missed_letters[i])
+         
     print("   |     |")
     print("   |     " + Fore.CYAN + man.head())
     print(Fore.WHITE + "   |    " + Fore.CYAN + man.leftArm() + man.abdomen() + man.rightArm())
@@ -31,7 +37,7 @@ def print_letter_count(letters):
 def refresh(word, man):
     colorama.init()
     print(Fore.WHITE + "\n" * 50)
-    draw_Board(word.get_guessed_word(), man)
+    draw_Board(word, word.get_guessed_word(), man)
     print_letter_count(len(word.get_guessed_word()))
 
 
@@ -55,7 +61,7 @@ def get_guess(word, man):
 
 def correct_guess():
 
-    print(Fore.GREEN + "Congratulations! That letter is in the word!")
+    print(Fore.GREEN + "Good Job! That letter is in the word!")
     time.sleep(1.5)
 
 
