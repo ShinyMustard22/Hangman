@@ -5,14 +5,15 @@ from colorama import Fore
 
 
 def draw_Board(word, guessed_word, man):
-    print("   - - - -                   ", end='')
+    print("   - - - -                   Guessed letters not in word: ", end='')
     
     #print out each missed letter
-    i = 0;
-    while (i < word.missed_letters.length):
-        print(word.missed_letters[i])
+    i = 0
+    while (i <= len(word.get_missed_letters())-1):
+        print(word.get_missed_letters()[i], end=', ')
+        i += 1
          
-    print("   |     |")
+    print("\n   |     |")
     print("   |     " + Fore.CYAN + man.head())
     print(Fore.WHITE + "   |    " + Fore.CYAN + man.leftArm() + man.abdomen() + man.rightArm())
     print(Fore.WHITE + "   |    " + Fore.CYAN + man.leftLeg() + " " + man.rightLeg())
