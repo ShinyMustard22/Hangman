@@ -5,7 +5,7 @@ import console_printing
 
 
 def main():
-    letters = random.randint(4, 7)
+    letters = random.randint(5, 7)
 
     word = Word(letters)
     man = Man()

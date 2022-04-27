@@ -4,10 +4,7 @@ import utility
 
 class Word:
     def __init__(self, letters):
-        if letters == 4:
-            word_file = open("words/fourLetterWords.txt", "r")
-
-        elif letters == 5:
+        if letters == 5:
             word_file = open("words/fiveLetterWords.txt", "r")
 
         elif letters == 6:
